@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result</title>
+</head>
+<body>
+    <h1>Serach Result</h1>
+    {% if results %}
+    <ul>
+        {% for product in results %}
+        <div class="col-md-6">
+            <img src="{{ product.product_image.url }}" alt="Product Image" class="img-fluid" style="width: 150px;">
+          </div>
+        <h3>Product:{{ product.name }}<h3>
+        {% endfor %}
+    </ul>
+    {% else %}
+       <p>No result Found.</p>
+    {% endif %}
+    <a href="{% url 'home' %}"><button >Back to home</button></a>
+</body>
+</html>

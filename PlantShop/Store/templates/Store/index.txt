@@ -1,0 +1,51 @@
+{% extends 'Store/base.html' %}
+{% load static %}
+{% block title %}
+Plant Nursery
+{%endblock title%}
+
+
+
+
+
+{% block content %}
+
+<div class="container">
+    <div class="container h4 pb-2 mb-4 text-dark text-center border-bottom border-dark my-3">
+        Top Categories
+    </div>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          {% for i in categories %}
+            <div class="carousel-item {% if forloop.first %} active {% endif %}">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-3">
+                    <a href="{% url 'product' i.id %}" class="d-block">
+                      <div class="card border-2" style="margin: 5px;">
+                        <img src="{{ i.image.url }}" class="card-img-top" alt="..." style="height: 200px;">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ i.name }}</h5>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</div>      
+    
+{% endblock content %}
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            background-image: url('/static/image/bg4.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif; /* Example font-family */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #a08484;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #1b8ab6;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Orders</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Address</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td><img src="{{ order.order_item.product_image.url }}" alt="Product Image"></td>
+                <td>{{ order.order_item.name }}</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.date }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No orders found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
